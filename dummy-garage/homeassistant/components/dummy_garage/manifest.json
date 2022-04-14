@@ -1,0 +1,15 @@
+{
+  "domain": "dummy_garage",
+  "name": "Dummy Garage",
+  "config_flow": true,
+  "documentation": "https://www.home-assistant.io/integrations/dummy_garage",
+  "requirements": [],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": [
+    "@adafycheng"
+  ],
+  "iot_class": "local_polling"
+}
