@@ -1,22 +1,21 @@
-"""Sensor platform for Dummy Garage integration."""
+"""Lock platform for Dummy Garage integration."""
 from __future__ import annotations
 
 import voluptuous as vol
 
-from homeassistant.components.sensor import (
+from homeassistant.components.lock import (
     PLATFORM_SCHEMA,
-    SensorDeviceClass,
-    SensorEntity,
-    SensorStateClass,
+    LockEntity,
 )
-from homeassistant.const import CONF_MAC, CONF_NAME, TEMP_CELSIUS
+
+from homeassistant.const import CONF_NAME, CONF_MAC
 from homeassistant.core import HomeAssistant
+import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
-import homeassistant.helpers.config_validation as cv
 
 
-DEFAULT_NAME = "Dummy Garage - Sensor"
+DEFAULT_NAME = "Dummy Garage Door Lock"
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
@@ -32,38 +31,43 @@ async def async_setup_platform(
     add_entities: AddEntitiesCallback,
     discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
-    """Set up the sensor platform."""
+    """Set up the lock platform."""
     name = config[CONF_NAME]
     mac_addr = config[CONF_MAC]
 
-    add_entities([SmartGarageSensor(mac_addr, name)], True)
+    add_entities([DummyGarageDoorLock(mac_addr, name)])
 
 
-class SmartGarageSensor(SensorEntity):
-    """Representation of a Sensor."""
+class DummyGarageDoorLock(LockEntity):
+    """Representation of a DummyGarage doorlock."""
 
     def __init__(self, mac, name) -> None:
+        """Initialize the DummyGarage Lock Device."""
         super().__init__()
         self._mac = mac
         self._name = name
-        self._attr_name = name
-        self._attr_native_unit_of_measurement = TEMP_CELSIUS
-        self._attr_device_class = SensorDeviceClass.TEMPERATURE
-        self._attr_state_class = SensorStateClass.MEASUREMENT
+        self._state = True
 
     @property
     def name(self) -> str:
-        """Return the name of the switch."""
+        """Return the name of the lock."""
         return self._name
 
     @property
     def unique_id(self) -> str:
         """Return a unique, Home Assistant friendly identifier for this entity."""
+        # return "sdhfsdhfid23741ry9fe"
         return self._mac.replace(":", "")
 
-    def update(self) -> None:
-        """Fetch new state data for the sensor.
+    @property
+    def is_locked(self) -> bool | None:
+        """Return true if the lock is locked."""
+        return self._state
 
-        This is the only method that should fetch new data for Home Assistant.
-        """
-        self._attr_native_value = 23
+    def lock(self, **kwargs) -> None:
+        """Lock."""
+        self._state = True
+
+    def unlock(self, **kwargs) -> None:
+        """Unlonk."""
+        self._state = False
