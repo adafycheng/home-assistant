@@ -1,4 +1,4 @@
-"""Binary Sensor platform for Dummy Garage integration."""
+"""Platform for binary sensor integration."""
 from __future__ import annotations
 
 import voluptuous as vol

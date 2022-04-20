@@ -2,10 +2,10 @@
   "config": {
     "step": {
       "user": {
-        "description": "New NEW_NAME Sensor",
+        "description": "Dummy Garage",
         "data": {
           "entity": "Input sensor",
-          "name": "Name"
+          "name": "Dummy Sensor"
         }
       }
     }

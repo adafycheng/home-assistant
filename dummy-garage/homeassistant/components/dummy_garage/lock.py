@@ -1,4 +1,4 @@
-"""Lock platform for Dummy Garage integration."""
+"""Platform for lock integration."""
 from __future__ import annotations
 
 import voluptuous as vol

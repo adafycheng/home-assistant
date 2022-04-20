@@ -1,4 +1,4 @@
-"""Switch platform for Dummy Garage integration."""
+"""Platform for switch integration."""
 from __future__ import annotations
 
 
@@ -47,8 +47,6 @@ class DummyGarageDoorSwitch(SwitchEntity):
         self._available = True
         self._device = name
         self._state = flip_on_off
-        # self.hass.states.set(STATE_ENTITY_ID, self._state)
-        # self._device = switchmate.Switchmate(mac=mac, flip_on_off=flip_on_off)
 
     @property
     def unique_id(self) -> str:
@@ -58,11 +56,6 @@ class DummyGarageDoorSwitch(SwitchEntity):
     @property
     def available(self) -> bool:
         """Return True if entity is available."""
-        # LOGGER.warning(
-        #    "Service '%s' is not supported by %s",
-        #    SERVICE_TURN_ON_WITH_TIMER_NAME,
-        #    self.name,
-        # )
         return self._available
 
     @property

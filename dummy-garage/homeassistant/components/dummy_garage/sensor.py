@@ -1,4 +1,4 @@
-"""Sensor platform for Dummy Garage integration."""
+"""Platform for sensor integration."""
 from __future__ import annotations
 
 import voluptuous as vol
@@ -36,10 +36,10 @@ async def async_setup_platform(
     name = config[CONF_NAME]
     mac_addr = config[CONF_MAC]
 
-    add_entities([SmartGarageSensor(mac_addr, name)], True)
+    add_entities([DummyGarageSensor(mac_addr, name)], True)
 
 
-class SmartGarageSensor(SensorEntity):
+class DummyGarageSensor(SensorEntity):
     """Representation of a Sensor."""
 
     def __init__(self, mac, name) -> None:
