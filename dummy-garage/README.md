@@ -261,15 +261,19 @@
 
     ![HA Web Application](images/HAHome.png)
 
-2. Add the entities at the **Overview** tab.
+2. Check that the entities are created.
 
-3. Trigger the ***Open Garage Door*** action and observe the door lock and switch status.
+    ![Dummy Garage entities](images/DummyGarageEntities.png)
 
-    ![Dummy door open](images/DummyGarageDoorOpen.png)
+3. Add the entities at the **Overview** tab.
 
-4. Trigger the ***Close Garage Door*** action and observe the door lock and switch status.
+4. Trigger the ***Open Garage Door*** action and observe the door lock and switch status.
 
-    ![Dummy door close](images/DummyGarageDoorClose.png)
+    ![Dummy garage door open](images/DummyGarageDoorOpen.png)
+
+5. Trigger the ***Close Garage Door*** action and observe the door lock and switch status.
+
+    ![Dummy garage door close](images/DummyGarageDoorClose.png)
 
 ## Acknowledgements
 
