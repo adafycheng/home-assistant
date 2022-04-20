@@ -94,9 +94,9 @@
 
 4. For each of the platforms,
 
-    i. define the PLATFORM_SCHEMA (mandatoriness and data type) for getting the inputs from configuration.yaml.
+    i. Define the **PLATFORM_SCHEMA** (mandatoriness and data type) for getting the inputs from configuration.yaml.
 
-    ```
+    ```python
     import voluptuous as vol
 
     from homeassistant.components.sensor import (
@@ -119,7 +119,7 @@
 
     ii. Add a `async_setup_platform` function to be called when the platform is being setup.  In this function, the entity will be created and added to Home Assistant.
 
-    ```
+    ```python
     async def async_setup_platform(
         hass: HomeAssistant,
         config: ConfigType,
@@ -135,9 +135,9 @@
 
     iii. Create a class with the Entity class corresponding to the platform as the input parameter.
 
-    - The `__init__()` function is the constructor of the class.
-    - The `name()` function returns as the Name of the entity shown in the Home Assistant Web Application.
-    - The `unique_id()` function returns as the unique ID of the entity.  I transform the input MAC address to a unique ID.
+    - The `__init__` function is the constructor of the class.
+    - The `name` function returns as the Name of the entity shown in the Home Assistant Web Application.
+    - The `unique_id` function returns as the unique ID of the entity.  I transform the input MAC address to a unique ID.
    
     ```python
     class DummyGarageSensor(SensorEntity):
